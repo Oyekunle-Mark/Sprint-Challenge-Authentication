@@ -1,11 +1,11 @@
 import React from 'react';
 
-import SampleComponent from './components/SampleComponent';
+import LandingPage from './components/LandingPage';
 
 const App = () => (
   <div>
-    <h1>I am the container</h1>
-    <SampleComponent />
+    <h1>Jokes</h1>
+    <LandingPage />
   </div>
 );
 
