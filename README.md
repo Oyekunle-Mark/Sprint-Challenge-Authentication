@@ -42,9 +42,9 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 4. What are the three parts of the JSON Web Token?
 
-   *Header
-   *Payload
-   *Signature
+   - Header
+   - Payload
+   - Signature
 
 ## Project Set Up
 
