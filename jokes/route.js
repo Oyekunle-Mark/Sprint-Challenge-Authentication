@@ -1,6 +1,6 @@
 const route = require('express').Router();
-const handlers = require('./handlers');
+const handler = require('./handlers');
 
-route.get('/get-jokes', handlers.getJokes);
+route.get('/get-jokes', handler);
 
 module.exports = route;
