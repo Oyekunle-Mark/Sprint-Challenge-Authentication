@@ -78,9 +78,16 @@ describe('/api/auth/login [POST]', () => {
       .then(() =>
         request(server)
           .post('/api/auth/login')
-          .send({ username: 'user'})
+          .send({ username: 'user' })
           .expect('Content-Type', /json/)
           .expect(400),
-      ),
-  );
+      ));
+});
+
+describe('/api/jokes [GET]', () => {
+  it('returns a status 401', () =>
+    request(server)
+      .get('/api/jokes')
+      .expect('Content-Type', /json/)
+      .expect(401));
 });
