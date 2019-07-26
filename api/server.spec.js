@@ -55,6 +55,7 @@ describe('/api/auth/register [POST]', () => {
       .expect(400));
 });
 
+// this always returns a 500
 describe('/api/auth/login [POST]', () => {
   it('returns status 200 after login', () =>
     request(server)

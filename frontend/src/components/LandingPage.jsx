@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 import Form from './Form';
 
-const LandingPage = () => {
+const LandingPage = ({ history }) => {
   const [registerMessage, updateRegisterMessage] = useState('');
   const [loginMessage, updateloginMessage] = useState('');
 
@@ -23,6 +24,7 @@ const LandingPage = () => {
       .then(res => {
         console.log('Logged in');
         localStorage.setItem('token', res.data.token);
+        history.push('/jokes');
       })
       .catch(err => {
         updateloginMessage('Incorrect username or password');
