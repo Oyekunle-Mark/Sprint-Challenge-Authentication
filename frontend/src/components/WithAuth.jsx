@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
+import { string, func } from 'prop-types';
 
 const WithAuth = ({ path, component: Component }) => (
   <Route
@@ -13,5 +14,10 @@ const WithAuth = ({ path, component: Component }) => (
     }
   />
 );
+
+WithAuth.propTypes = {
+  component: func.isRequired,
+  path: string.isRequired,
+};
 
 export default WithAuth;

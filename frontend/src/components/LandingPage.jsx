@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import { object } from 'prop-types';
 
 import Form from './Form';
 
@@ -42,6 +42,10 @@ const LandingPage = ({ history }) => {
       </div>
     </div>
   );
+};
+
+LandingPage.propTypes = {
+  history: object.isRequired,
 };
 
 export default LandingPage;

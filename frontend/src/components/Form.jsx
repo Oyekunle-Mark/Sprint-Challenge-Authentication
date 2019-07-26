@@ -1,4 +1,5 @@
 import React, { createRef } from 'react';
+import { func, string } from 'prop-types';
 
 const Form = ({ handleSubmit, type }) => {
   const username = createRef();
@@ -20,6 +21,11 @@ const Form = ({ handleSubmit, type }) => {
       <button type="submit">{type}</button>
     </form>
   );
+};
+
+Form.propTypes = {
+  type: string.isRequired,
+  handleSubmit: func.isRequired,
 };
 
 export default Form;
