@@ -23,6 +23,7 @@ const StyledJokes = styled.div`
     font-size: 14px;
     font-family: sans-serif;
     border-radius: 3px;
+    max-width: 600px;
   }
 `;
 
