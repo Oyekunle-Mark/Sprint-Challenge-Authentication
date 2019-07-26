@@ -48,6 +48,8 @@ const Form = ({ handleSubmit, type }) => {
   const submitForm = e => {
     e.preventDefault();
 
+    if (!formValues.password || !formValues.username) return;
+
     handleSubmit(formValues);
     setFormValues({
       username: '',
