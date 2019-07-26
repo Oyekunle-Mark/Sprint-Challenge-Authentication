@@ -21,9 +21,15 @@ describe('/ [GET]', () => {
       .then(res => {
         expect(res.body.message).toEqual('Welcome, O faithful developer.');
       }));
+
+  it('Responds with status 404 for bad requests', () =>
+    request(server)
+      .get('/very-bad-request')
+      .expect('Content-Type', /json/)
+      .expect(404));
 });
 
-describe('/ [POST]', () => {
+describe('/api/auth/register [POST]', () => {
   it('Returns a 201 after creating user', () =>
     request(server)
       .post('/api/auth/register')
@@ -40,4 +46,41 @@ describe('/ [POST]', () => {
       .then(res => {
         expect(res.body.message).toEqual('User created successfully.');
       }));
+
+  it('Returns a 400 for bad req body', () =>
+    request(server)
+      .post('/api/auth/register')
+      .send({ username: 'user' })
+      .expect('Content-Type', /json/)
+      .expect(400));
+});
+
+describe('/api/auth/login [POST]', () => {
+  it('returns status 200 after login', () =>
+    request(server)
+      .post('/api/auth/register')
+      .send({ username: 'user', password: 'password' })
+      .expect('Content-Type', /json/)
+      .then(
+        () =>
+          request(server)
+            .post('/api/auth/login')
+            .send({ username: 'user', password: 'password' })
+            .expect('Content-Type', /json/),
+        // .expect(200),
+      ));
+
+  it('returns status 400 for bad request', () =>
+    request(server)
+      .post('/api/auth/register')
+      .send({ username: 'user', password: 'password' })
+      .expect('Content-Type', /json/)
+      .then(() =>
+        request(server)
+          .post('/api/auth/login')
+          .send({ username: 'user'})
+          .expect('Content-Type', /json/)
+          .expect(400),
+      ),
+  );
 });
