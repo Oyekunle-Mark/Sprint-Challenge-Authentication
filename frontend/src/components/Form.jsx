@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React, { useState } from 'react';
 import { func, string } from 'prop-types';
 import styled from 'styled-components';
 
@@ -34,22 +34,43 @@ const StyledForm = styled.form`
 `;
 
 const Form = ({ handleSubmit, type }) => {
-  const username = createRef();
-  const password = createRef();
+  const [formValues, setFormValues] = useState({
+    username: '',
+    password: '',
+  });
+
+  const handleChange = e =>
+    setFormValues({
+      ...formValues,
+      [e.target.name]: e.target.value,
+    });
 
   const submitForm = e => {
     e.preventDefault();
 
-    handleSubmit({
-      username: username.current.value,
-      password: password.current.value,
+    handleSubmit(formValues);
+    setFormValues({
+      username: '',
+      password: '',
     });
   };
 
   return (
     <StyledForm onSubmit={submitForm}>
-      <input type="text" placeholder="username" ref={username} />
-      <input type="password" placeholder="password" ref={password} />
+      <input
+        type="text"
+        name="username"
+        placeholder="username"
+        value={formValues.username}
+        onChange={handleChange}
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="password"
+        value={formValues.password}
+        onChange={handleChange}
+      />
       <button type="submit">{type}</button>
     </StyledForm>
   );
