@@ -20,6 +20,14 @@ const StyledLandingPage = styled.div`
     font-weight: 100;
     transform: scaleY(0.3);
   }
+
+  div p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #d11e48;
+    text-align: center;
+  }
 `;
 
 import Form from './Form';
