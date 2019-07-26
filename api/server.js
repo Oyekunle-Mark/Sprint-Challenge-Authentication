@@ -3,9 +3,8 @@ const cors = require('cors');
 const helmet = require('helmet');
 const logger = require('morgan');
 
-const configureRoutes = require('../config/routes.js');
-
 const server = express();
+const users = require('../jokes/route');
 
 server.use(express.json());
 server.use(cors());
@@ -18,6 +17,8 @@ server.get('/', (req, res) =>
     message: 'Welcome, O faithful developer.',
   }),
 );
+
+server.use('/api', users);
 
 server.use((req, res) =>
   res.status(404).json({
