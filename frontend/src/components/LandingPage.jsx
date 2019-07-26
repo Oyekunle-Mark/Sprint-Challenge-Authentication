@@ -1,6 +1,26 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { object } from 'prop-types';
+import styled from 'styled-components';
+
+const StyledLandingPage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h4 {
+    font-family: 'Rajdhani', sans-serif;
+    margin-top: 40px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  hr {
+    width: 70vw;
+    font-weight: 100;
+    transform: scaleY(0.3);
+  }
+`;
 
 import Form from './Form';
 
@@ -31,16 +51,21 @@ const LandingPage = ({ history }) => {
       });
 
   return (
-    <div>
+    <StyledLandingPage>
+      <h4>Register</h4>
       <div>
-        <Form type="register" handleSubmit={register} />
+        <Form type="Register" handleSubmit={register} />
         <p>{registerMessage}</p>
       </div>
+
+      <hr />
+
+      <h4>Login</h4>
       <div>
-        <Form type="login" handleSubmit={login} />
+        <Form type="Login" handleSubmit={login} />
         <p>{loginMessage}</p>
       </div>
-    </div>
+    </StyledLandingPage>
   );
 };
 
